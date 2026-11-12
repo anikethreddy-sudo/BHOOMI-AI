@@ -21,7 +21,7 @@ def collect_images(data_dir: Path) -> tuple[list[dict[str, str]], list[str]]:
     if not data_dir.is_dir():
         raise FileNotFoundError(f"Dataset directory not found: {data_dir}")
 
-    class_dirs = sorted(path for path in data_dir.iterdir() if path.is_dir())
+    class_dirs = sorted(\n        path for path in data_dir.iterdir()\n        if path.is_dir() and any(\n            child.is_file() and child.suffix.lower() in IMAGE_EXTENSIONS\n            for child in path.rglob("*")\n        )\n    )
     if len(class_dirs) < 2:
         raise ValueError(f"Expected at least two class folders in {data_dir}")
 
@@ -163,7 +163,7 @@ def main() -> None:
     parser.add_argument(
         "--output-dir",
         type=Path,
-        default=Path("data/processed/tomato_10class/manifests"),
+        default=Path("data/processed/tomato_10class_manifests"),
         help="Directory for CSV manifests and split summary",
     )
     parser.add_argument("--seed", type=int, default=42)
