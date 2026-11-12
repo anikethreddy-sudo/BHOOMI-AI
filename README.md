@@ -92,8 +92,8 @@ Keep original downloads under `data/raw/`. Review dataset terms and attribution 
 ## Train and evaluate
 
 ```powershell
-python -m bhoomi.train --data-dir data/processed/tomato --epochs 5 --batch-size 16
-python -m bhoomi.evaluate --data-dir data/processed/tomato --checkpoint models/tomato_efficientnet_b0.pth
+python -m src.bhoomi.train --data-dir data/processed/tomato --epochs 5 --batch-size 16
+python -m src.bhoomi.evaluate --data-dir data/processed/tomato --checkpoint models/tomato_efficientnet_b0.pth
 ```
 
 The training script creates a reproducible stratified train/validation split. This is a development baseline, not a substitute for a separately collected field test set.
