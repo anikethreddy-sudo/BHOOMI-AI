@@ -31,10 +31,13 @@ def run_training(data_dir: Path, manifest_dir: Path, output: Path,
     model = build_model(len(classes), pretrained=False).to(device)
     optimizer = torch.optim.AdamW(model.parameters(), lr=1e-4, weight_decay=1e-4)
 
-    class_counts = torch.bincount(
-        torch.tensor([label for _, label in train_loader.dataset], dtype=torch.long),
-        minlength=len(classes),
-    ).float()
+    class_counts = torch.tensor(
+        [
+            sum(row["class_name"] == class_name for row in train_loader.dataset.rows)
+            for class_name in classes
+        ],
+        dtype=torch.float32,
+    )
     class_weights = (class_counts.sum() / (len(classes) * class_counts)).sqrt()
     class_weights = class_weights / class_weights.mean()
     criterion = nn.CrossEntropyLoss(weight=class_weights.to(device))
