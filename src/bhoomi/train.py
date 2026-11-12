@@ -13,7 +13,7 @@ from .model import build_model
 
 
 def run_training(data_dir: Path, manifest_dir: Path, output: Path,
-                 epochs: int, batch_size: int, seed: int):
+                 epochs: int, batch_size: int, seed: int, pretrained: bool = False):
     torch.manual_seed(seed)
     if torch.cuda.is_available():
         torch.cuda.manual_seed_all(seed)
@@ -28,7 +28,8 @@ def run_training(data_dir: Path, manifest_dir: Path, output: Path,
     print(f"Validation images: {len(val_loader.dataset)}")
     print("Test images are not loaded during training.")
 
-    model = build_model(len(classes), pretrained=False).to(device)
+    print(f"ImageNet pretrained weights: {pretrained}")
+    model = build_model(len(classes), pretrained=pretrained).to(device)
     optimizer = torch.optim.AdamW(model.parameters(), lr=1e-4, weight_decay=1e-4)
 
     class_counts = torch.tensor(
@@ -84,6 +85,7 @@ def run_training(data_dir: Path, manifest_dir: Path, output: Path,
                     "model_state_dict": model.state_dict(),
                     "validation_accuracy": best_accuracy,
                     "seed": seed,
+                    "pretrained": pretrained,
                     "training_manifest": str(manifest_dir / "train.csv"),
                     "validation_manifest": str(manifest_dir / "validation.csv"),
                 },
@@ -106,12 +108,13 @@ def main():
     parser.add_argument("--epochs", type=int, default=5)
     parser.add_argument("--batch-size", type=int, default=8)
     parser.add_argument("--seed", type=int, default=42)
+    parser.add_argument("--pretrained", action="store_true", help="Initialize EfficientNet-B0 with ImageNet weights")
     args = parser.parse_args()
     if args.epochs < 1 or args.batch_size < 1:
         parser.error("--epochs and --batch-size must be positive")
     run_training(
         args.data_dir, args.manifest_dir, args.output,
-        args.epochs, args.batch_size, args.seed,
+        args.epochs, args.batch_size, args.seed, args.pretrained,
     )
 
 
