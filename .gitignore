@@ -1,0 +1,55 @@
+﻿# Python
+__pycache__/
+*.py[cod]
+*.pyd
+.pytest_cache/
+.mypy_cache/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Datasets
+data/raw/*
+data/processed/*
+data/external/*
+
+# Model weights and checkpoints
+*.pth
+*.pt
+*.h5
+*.keras
+*.onnx
+models/*
+!models/.gitkeep
+
+# Training artifacts
+artifacts/*
+!artifacts/.gitkeep
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Frontend
+node_modules/
+dist/
+build/
+
+# IDE and OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Logs and databases
+*.log
+*.sqlite3
+*.db
