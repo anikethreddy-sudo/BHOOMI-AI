@@ -34,7 +34,7 @@ def write_csv(path: Path, rows: list[dict[str, str]], fields: list[str]) -> None
         writer.writerows(rows)
 
 
-def collect_images(data_dir: Path) -> tuple[list[dict[str, str]], list[dict[str, str]], int]:
+def collect_images(data_dir: Path) -> tuple[list[dict[str, str]], list[dict[str, str]], int, list[dict[str, str]]]:
     if not data_dir.is_dir():
         raise FileNotFoundError(f"Dataset directory not found: {data_dir}")
 
