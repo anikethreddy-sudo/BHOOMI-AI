@@ -973,3 +973,275 @@ button:focus-visible, a:focus-visible {
   .visual-image { height: 240px; }
   .footer { padding: 18px 0; }
 }
+
+
+/* =====================================================
+   BHOOMI AI — SIMPLE STUDENT PROJECT PAGE LAYOUT
+   Home / Analyze / Results
+   ===================================================== */
+
+.topbar {
+  display: flex;
+  gap: 22px;
+  min-height: 78px;
+  height: auto;
+  flex-wrap: wrap;
+}
+
+.page-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  padding: 5px;
+  border: 1px solid #e2e8dc;
+  border-radius: 12px;
+  background: #f7f9f4;
+}
+
+.page-nav .nav-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  min-height: 36px;
+  padding: 0 13px;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  color: #4b5545 !important;
+  font: 650 11px Manrope, sans-serif !important;
+  cursor: pointer;
+}
+
+.page-nav .nav-link:hover {
+  background: #edf3e6;
+}
+
+.page-nav .nav-link.active {
+  background: #a3d65c;
+  color: #171717 !important;
+}
+
+.home-page, .page-content {
+  min-height: calc(100vh - 160px);
+}
+
+.home-page .hero {
+  min-height: 420px;
+}
+
+.home-page .hero-copy {
+  padding-top: 58px;
+  padding-bottom: 58px;
+}
+
+.home-page .primary-action,
+.no-results .primary-action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  min-height: 43px;
+  margin-top: 24px;
+  padding: 0 17px;
+  border: 1px solid #8fbd4d;
+  border-radius: 9px;
+  background: #a3d65c;
+  color: #171717 !important;
+  font: 750 12px Manrope, sans-serif !important;
+  cursor: pointer;
+}
+
+.home-page .primary-action:hover,
+.no-results .primary-action:hover {
+  background: #b6e47a;
+}
+
+.home-info {
+  padding: 34px 0 48px;
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+}
+
+.info-card {
+  padding: 21px;
+  border: 1px solid #e1e8dc;
+  border-radius: 13px;
+  background: rgba(255,255,255,.94);
+}
+
+.info-icon {
+  display: grid;
+  place-items: center;
+  width: 39px;
+  height: 39px;
+  margin-bottom: 13px;
+  border-radius: 10px;
+  background: #edf5e4;
+  color: #5d8735 !important;
+}
+
+.info-card h3 {
+  margin: 0 0 8px;
+  color: #20271d !important;
+  font: 750 13px Manrope, sans-serif !important;
+}
+
+.info-card p {
+  margin: 0;
+  color: #596451 !important;
+  font: 500 11px/1.7 Manrope, sans-serif !important;
+}
+
+.project-note {
+  margin: 17px 0 0;
+  padding: 12px 14px;
+  border-left: 3px solid #a3d65c;
+  background: rgba(255,255,255,.72);
+  color: #596451 !important;
+  font: 500 10px/1.7 Manrope, sans-serif !important;
+}
+
+.page-content {
+  width: min(100%, 920px);
+  margin: 0 auto;
+  padding: 46px 0 55px;
+}
+
+.page-title {
+  margin-bottom: 24px;
+}
+
+.page-title .section-kicker {
+  color: #648c38 !important;
+}
+
+.page-title h1 {
+  margin: 9px 0 8px;
+  color: #171717 !important;
+  font: 800 clamp(27px, 4vw, 38px)/1.15 Manrope, sans-serif !important;
+  letter-spacing: -1.2px !important;
+  -webkit-text-stroke: 0 !important;
+}
+
+.page-title p {
+  margin: 0;
+  color: #596451 !important;
+  font: 500 12px/1.7 Manrope, sans-serif !important;
+}
+
+.single-panel {
+  width: min(100%, 700px);
+  margin: 0 auto;
+}
+
+.single-panel .dropzone,
+.single-panel .preview-box {
+  min-height: 290px;
+  height: 290px;
+}
+
+.single-panel .dropzone {
+  background: #fff !important;
+}
+
+.single-panel .analyze-button {
+  min-height: 48px;
+}
+
+.page-help {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 16px;
+  color: #66715f !important;
+  font: 500 10px Manrope, sans-serif;
+}
+
+.page-help svg {
+  color: #6d983e;
+}
+
+.report-panel {
+  width: min(100%, 760px);
+  margin: 0 auto 28px;
+}
+
+.report-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  margin-left: auto;
+  color: #5d8735 !important;
+  font: 700 9px Manrope, sans-serif;
+}
+
+.report-panel .diagnosis {
+  max-width: 590px;
+  margin: 0 auto;
+}
+
+.no-results {
+  min-height: 310px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.no-results h3 {
+  margin: 0;
+  color: #20271d !important;
+  font: 750 17px Manrope, sans-serif;
+}
+
+.no-results p {
+  max-width: 360px;
+  color: #66715f !important;
+  font: 500 11px/1.7 Manrope, sans-serif;
+}
+
+.results-explain {
+  padding-top: 26px;
+  border-top: 1px solid #e2e8dc;
+}
+
+.results-explain .visual-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.footer {
+  gap: 15px;
+}
+
+@media (max-width: 900px) {
+  .topbar { padding: 12px 0; }
+  .topbar-right { margin-left: auto; }
+  .page-nav { order: 3; width: 100%; }
+  .page-nav .nav-link { flex: 1; }
+  .info-grid { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 600px) {
+  .topbar { justify-content: space-between; gap: 10px; }
+  .topbar-right { margin-left: 0; }
+  .page-nav { order: 3; width: 100%; }
+  .page-nav .nav-link { padding: 0 8px; font-size: 10px !important; }
+  .home-page .hero { min-height: 0; }
+  .home-page .hero-copy { padding: 35px 0 20px; }
+  .home-info { padding-top: 25px; }
+  .info-grid { grid-template-columns: 1fr; }
+  .page-content { padding: 32px 0 42px; }
+  .single-panel .dropzone, .single-panel .preview-box { height: 240px; min-height: 240px; }
+  .report-panel .panel-heading { flex-wrap: wrap; }
+  .report-status { width: 100%; margin-left: 48px; }
+  .results-explain .visual-grid { grid-template-columns: 1fr; }
+  .footer { flex-direction: column; align-items: flex-start; }
+}
