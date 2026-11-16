@@ -1,0 +1,529 @@
+﻿#root { min-height: 100vh; }
+.app-shell { max-width: 1440px; margin: auto; padding: 0 6.1%; overflow: hidden; }
+.topbar { height: 82px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid #e5ece5; }
+.brand { display: flex; align-items: center; gap: 11px; text-decoration: none; color: #174b35; font: 800 18px Manrope,sans-serif; letter-spacing: -.7px; }
+.brand-mark { width: 39px; height: 39px; border-radius: 13px; background: #e2f1e5; display: grid; place-items: center; color: #24734b; }
+.brand-ai { color: #76a986; }
+.brand small { display: block; font: 700 8px "DM Sans",sans-serif; letter-spacing: 1.55px; color: #8b9d91; margin-top: 2px; }
+.topbar-right { display: flex; align-items: center; gap: 22px; }
+.connection { display: inline-flex; align-items: center; gap: 7px; font-size: 10px; font-weight: 700; letter-spacing: .8px; }
+.connection.online { color: #27804e; }
+.connection.offline { color: #a46b36; }
+.version { color: #84948a; font-size: 9px; letter-spacing: 1px; font-weight: 700; }
+.hero { min-height: 340px; display: grid; grid-template-columns: 1.1fr .9fr; align-items: center; position: relative; border-bottom: 1px solid #e5ece5; }
+.hero-copy { padding: 44px 0 48px; position: relative; z-index: 2; }
+.eyebrow,.section-kicker { color: #5a946d; font-size: 10px; font-weight: 700; letter-spacing: 1.7px; }
+.eyebrow { display: flex; align-items: center; gap: 9px; }
+.eyebrow span { width: 7px; height: 7px; background: #63a87b; border-radius: 50%; }
+.hero h1 { font: 800 clamp(36px,5vw,58px)/1.12 Manrope,sans-serif; letter-spacing: -2.9px; margin: 19px 0 14px; color: #173d2e; }
+.hero h1 em { color: #659a73; font-style: normal; }
+.hero-copy>p { max-width: 510px; color: #74867a; font-size: 14px; line-height: 1.8; margin: 0; }
+.hero-points { display: flex; flex-wrap: wrap; gap: 18px; margin-top: 25px; }
+.hero-points span { display: flex; align-items: center; gap: 7px; color: #567565; font-size: 11px; font-weight: 600; }
+.hero-points svg { color: #6caa7d; }
+.hero-art { height: 290px; position: relative; display: grid; place-items: center; color: #5e9b70; }
+.art-orbit { position: absolute; border: 1px solid #dcebdd; border-radius: 50%; }
+.orbit-one { width: 245px; height: 245px; }
+.orbit-two { width: 195px; height: 195px; border-style: dashed; }
+.art-leaf { width: 155px; height: 155px; border-radius: 48% 52% 48% 52%; display: grid; place-items: center; background: radial-gradient(circle,#e4f3e5,#f2f8ef 70%); transform: rotate(-24deg); }
+.art-leaf svg { transform: rotate(24deg); }
+.art-tag { position: absolute; top: 45px; right: 4%; padding: 9px 13px; background: #fff; border: 1px solid #e8eee7; border-radius: 30px; box-shadow: 0 7px 25px #244d3010; font-size: 9px; font-weight: 700; letter-spacing: .9px; color: #648b6c; }
+.pulse-dot { display: inline-block; width: 6px; height: 6px; background: #60aa75; border-radius: 50%; margin-right: 6px; }
+.art-caption { position: absolute; bottom: 31px; left: 15%; font: 800 10px/1.5 Manrope,sans-serif; letter-spacing: 2px; color: #9ab59c; }
+.workspace,.explain-section { padding: 42px 0 50px; }
+.section-heading { display: flex; align-items: end; justify-content: space-between; margin-bottom: 22px; }
+.section-heading h2 { font: 800 24px Manrope,sans-serif; letter-spacing: -.8px; color: #1a4030; margin: 6px 0 0; }
+.secure-note { display: flex; align-items: center; gap: 7px; color: #7c9182; font-size: 10px; font-weight: 600; }
+.workspace-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 19px; align-items: stretch; }
+.panel { background: #fff; border: 1px solid #e7eee7; border-radius: 16px; padding: 23px; box-shadow: 0 8px 30px #254a3010; min-width: 0; }
+.panel-heading { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; }
+.step-number { width: 36px; height: 36px; display: grid; place-items: center; background: #edf5ed; color: #5c936b; border-radius: 11px; font: 800 11px Manrope,sans-serif; }
+.panel-heading h3 { font: 800 14px Manrope,sans-serif; margin: 0 0 4px; color: #244a36; }
+.panel-heading p { margin: 0; color: #91a096; font-size: 11px; }
+.dropzone { width: 100%; min-height: 230px; border: 1.5px dashed #c8ddca; border-radius: 12px; background: #f8fbf7; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 9px; color: #7d9281; cursor: pointer; transition: .2s; }
+.dropzone:hover { background: #f0f7ef; border-color: #78ae82; }
+.upload-icon { width: 53px; height: 53px; display: grid; place-items: center; border-radius: 17px; background: #e8f3e8; color: #559268; margin-bottom: 5px; }
+.dropzone strong { color: #345e43; font: 700 13px Manrope,sans-serif; }
+.dropzone span { font-size: 11px; }
+.dropzone u { color: #47885d; font-weight: 700; text-underline-offset: 3px; }
+.dropzone small { font-size: 9px; color: #a0ada3; margin-top: 8px; }
+.preview-box { height: 230px; border-radius: 12px; overflow: hidden; position: relative; background: #eff4ee; }
+.preview-box>img { width: 100%; height: 100%; object-fit: contain; }
+.remove-image { position: absolute; top: 10px; right: 10px; width: 31px; height: 31px; border: 0; border-radius: 9px; background: #fff; color: #a54d4d; display: grid; place-items: center; cursor: pointer; }
+.file-label { position: absolute; bottom: 0; left: 0; right: 0; display: flex; align-items: center; gap: 7px; padding: 11px 13px; background: #173c2dcf; color: white; font-size: 10px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.analyze-button { width: 100%; border: 0; border-radius: 10px; background: #236b45; color: white; min-height: 47px; margin-top: 15px; display: flex; align-items: center; justify-content: center; gap: 10px; font-size: 12px; font-weight: 700; cursor: pointer; transition: .2s; }
+.analyze-button:hover:not(:disabled) { background: #195838; transform: translateY(-1px); }
+.analyze-button:disabled { opacity: .45; cursor: not-allowed; }
+.upload-footnote { display: flex; align-items: center; justify-content: center; gap: 6px; color: #9aa79d; font-size: 9px; margin-top: 13px; }
+.error-message { display: flex; gap: 8px; align-items: center; padding: 10px; background: #fff3f0; border-radius: 8px; color: #a94e42; font-size: 11px; margin-top: 12px; }
+.empty-result,.loading-result { min-height: 310px; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 20px; }
+.empty-icon { width: 65px; height: 65px; display: grid; place-items: center; border-radius: 21px; background: #f0f6ef; color: #80a989; margin-bottom: 17px; }
+.empty-result strong,.loading-result strong { font: 700 13px Manrope,sans-serif; color: #46634f; }
+.empty-result p,.loading-result p { max-width: 260px; font-size: 11px; line-height: 1.7; color: #9aa79d; }
+.empty-line { display: flex; gap: 5px; margin-top: 13px; }
+.empty-line span { width: 35px; height: 4px; border-radius: 4px; background: #e7eee6; }
+.loading-ring { color: #4c9764; margin-bottom: 17px; }
+.spin { animation: spin 1s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+.diagnosis { padding: 1px 2px; }
+.diagnosis-status { display: flex; justify-content: space-between; align-items: center; color: #4a9661; font-size: 9px; letter-spacing: .8px; font-weight: 700; }
+.diagnosis-status span:first-child { display: flex; align-items: center; gap: 6px; }
+.model-label { color: #9aa79d; }
+.prediction-name { font: 800 23px Manrope,sans-serif; color: #24563a; margin-top: 20px; letter-spacing: -.7px; }
+.prediction-subtitle { color: #8b9b8f; font-size: 10px; margin: 5px 0 20px; }
+.confidence-row { display: flex; justify-content: space-between; align-items: center; color: #75897a; font-size: 11px; }
+.confidence-row strong { color: #2e7549; font: 800 20px Manrope,sans-serif; }
+.confidence-track { height: 7px; border-radius: 10px; background: #edf2ec; overflow: hidden; margin-top: 9px; }
+.confidence-track span { height: 100%; display: block; border-radius: inherit; background: linear-gradient(90deg,#8fc49a,#2d8752); }
+.top-predictions { margin-top: 24px; }
+.top-predictions h4 { color: #9aaa9d; font-size: 9px; letter-spacing: 1.2px; margin: 0 0 8px; }
+.prediction-item { min-height: 36px; display: flex; align-items: center; border-bottom: 1px solid #eff2ee; gap: 10px; }
+.prediction-rank { color: #a5b5a7; font-size: 10px; font-weight: 700; }
+.prediction-class { color: #526c59; font-size: 10px; flex: 1; }
+.prediction-item strong { color: #376e49; font-size: 11px; }
+.review-warning { display: flex; gap: 8px; align-items: center; padding: 10px; margin-top: 13px; background: #fff8e9; color: #9a7434; border-radius: 8px; font-size: 10px; }
+.download-button { margin-top: 15px; border: 1px solid #dce9dd; border-radius: 9px; padding: 10px 13px; display: flex; gap: 8px; align-items: center; color: #39734d; background: white; font-size: 10px; font-weight: 700; cursor: pointer; }
+.download-button:hover { background: #f3f8f2; }
+.explain-section { border-top: 1px solid #e5ece5; }
+.explain-intro { margin: -10px 0 20px; font-size: 11px; line-height: 1.7; color: #839488; }
+.visual-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
+.visual-card { background: white; border: 1px solid #e6ede5; border-radius: 13px; overflow: hidden; }
+.visual-image { height: 210px; background: #edf3ec; display: grid; place-items: center; }
+.visual-image img { width: 100%; height: 100%; object-fit: contain; }
+.visual-card>div:last-child { padding: 13px 15px; display: flex; flex-direction: column; gap: 4px; }
+.visual-card strong { font: 700 11px Manrope,sans-serif; color: #365b41; }
+.visual-card span { font-size: 9px; color: #95a397; }
+.footer { min-height: 75px; display: flex; justify-content: space-between; align-items: center; gap: 12px; border-top: 1px solid #e5ece5; color: #9aa79d; font-size: 9px; }
+.footer-brand { display: flex; align-items: center; gap: 7px; color: #548263; font: 800 11px Manrope,sans-serif; letter-spacing: .5px; }
+@media (max-width: 800px) {
+  .app-shell { padding: 0 4%; }
+  .hero { grid-template-columns: 1fr .65fr; }
+  .hero h1 { font-size: 43px; }
+  .hero-points { gap: 10px; }
+  .workspace-grid { grid-template-columns: 1fr; }
+  .visual-grid { grid-template-columns: 1fr 1fr; }
+  .visual-card:last-child { grid-column: span 2; }
+}
+@media (max-width: 540px) {
+  .topbar { height: 70px; }
+  .topbar-right { gap: 0; }
+  .version { display: none; }
+  .hero { display: block; min-height: auto; }
+  .hero-copy { padding: 38px 0 20px; }
+  .hero h1 { font-size: 39px; }
+  .hero-art { height: 190px; }
+  .orbit-one { width: 170px; height: 170px; }
+  .orbit-two { width: 135px; height: 135px; }
+  .art-leaf { width: 115px; height: 115px; }
+  .art-leaf svg { width: 80px; }
+  .art-tag { top: 13px; right: 4%; }
+  .art-caption { bottom: 9px; left: 8%; }
+  .section-heading { align-items: flex-start; gap: 12px; }
+  .section-heading h2 { font-size: 20px; }
+  .secure-note { font-size: 9px; text-align: right; }
+  .panel { padding: 17px; }
+  .visual-grid { grid-template-columns: 1fr; }
+  .visual-card:last-child { grid-column: auto; }
+  .visual-image { height: 230px; }
+  .footer { padding: 17px 0; flex-wrap: wrap; }
+  .footer>span:last-child { width: 100%; }
+}
+
+/* FINAL FARMERS BACKGROUND */
+.app-shell {
+  background: rgba(246, 250, 244, 0.62);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+}
+
+.topbar {
+  background: rgba(255, 255, 255, 0.72);
+}
+
+.app-shell {
+  background: rgba(246, 250, 244, 0.58) !important;
+  backdrop-filter: blur(2px);
+}
+
+/* ===== BHOOMI AI PREMIUM VISUAL UPDATE ===== */
+
+/* Make farmer photograph stronger and clearer */
+body::before {
+  background:
+    linear-gradient(
+      120deg,
+      rgba(8, 28, 17, 0.08),
+      rgba(8, 28, 17, 0.03)
+    ),
+    url("/farmer-background.jpg") center center / cover no-repeat !important;
+}
+
+/* Reduce the washed-out dashboard overlay */
+.app-shell {
+  background: rgba(246, 250, 244, 0.22) !important;
+  backdrop-filter: blur(1px) !important;
+}
+
+/* Stronger headings */
+h1 {
+  font-family: "Manrope", sans-serif !important;
+  font-weight: 900 !important;
+  letter-spacing: -1.8px !important;
+}
+
+h2, h3 {
+  font-family: "Manrope", sans-serif !important;
+  font-weight: 800 !important;
+}
+
+/* Stronger paragraph text */
+p {
+  font-weight: 600 !important;
+}
+
+/* Stronger navigation and labels */
+.topbar,
+button,
+label {
+  font-weight: 700 !important;
+}
+
+/* Keep header readable */
+.topbar {
+  background: rgba(255, 255, 255, 0.88) !important;
+}
+
+
+/* ===== BLACK TYPOGRAPHY THEME ===== */
+
+.app-shell {
+  color: #111111 !important;
+}
+
+.app-shell h1,
+.app-shell h1 span,
+.app-shell h2,
+.app-shell h3,
+.app-shell h4,
+.app-shell p,
+.app-shell label,
+.app-shell strong,
+.app-shell a,
+.app-shell li,
+.app-shell span {
+  color: #111111 !important;
+}
+
+/* Header text */
+.topbar {
+  color: #000000 !important;
+}
+
+/* Main hero heading */
+h1 {
+  color: #000000 !important;
+  font-weight: 900 !important;
+}
+
+/* Supporting text */
+p {
+  color: #171717 !important;
+  font-weight: 600 !important;
+}
+
+
+/* ===== BHOOMI AI: TEAL + WHITE + SLATE ===== */
+
+:root {
+  --bhoomi-primary: #164E56;
+  --bhoomi-accent: #36A6A0;
+  --bhoomi-background: #EFF7F6;
+  --bhoomi-text: #29363B;
+}
+
+/* Main text */
+body,
+.app-shell {
+  color: var(--bhoomi-text) !important;
+}
+
+/* Headings and brand */
+h1, h2, h3, h4 {
+  color: var(--bhoomi-primary) !important;
+  font-family: "Manrope", sans-serif;
+  font-weight: 900 !important;
+}
+
+/* Supporting text */
+p, label, li, small {
+  color: var(--bhoomi-text) !important;
+}
+
+/* Accent elements */
+button,
+a,
+svg {
+  accent-color: var(--bhoomi-accent);
+}
+
+/* Dashboard surfaces */
+.app-shell {
+  background: rgba(239, 247, 246, 0.72) !important;
+}
+
+.topbar,
+.panel,
+.visual-card {
+  background: rgba(255, 255, 255, 0.90) !important;
+}
+
+/* Brand and active elements */
+.topbar strong,
+.topbar h1,
+.topbar h2 {
+  color: var(--bhoomi-primary) !important;
+}
+
+/* Buttons */
+button {
+  border-color: var(--bhoomi-accent);
+}
+
+/* Keep the farmer background */
+body::before {
+  background:
+    linear-gradient(
+      rgba(22, 78, 86, 0.12),
+      rgba(22, 78, 86, 0.12)
+    ),
+    url("/farmer-background.jpg") center center / cover no-repeat !important;
+}
+
+
+/* ===== BHOOMI AI: WHITE + BLACK + LIME ===== */
+
+:root {
+  --bhoomi-primary: #171717;
+  --bhoomi-accent: #A3D65C;
+  --bhoomi-background: #F7F8F5;
+  --bhoomi-text: #343A31;
+}
+
+body {
+  color: var(--bhoomi-text) !important;
+}
+
+.app-shell {
+  color: var(--bhoomi-text) !important;
+  background: rgba(247, 248, 245, 0.76) !important;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--bhoomi-primary) !important;
+  font-weight: 900 !important;
+}
+
+p, label, li {
+  color: var(--bhoomi-text) !important;
+}
+
+.topbar {
+  background: rgba(255, 255, 255, 0.94) !important;
+}
+
+.panel,
+.visual-card {
+  background: rgba(255, 255, 255, 0.96) !important;
+  border-color: rgba(23, 23, 23, 0.10) !important;
+}
+
+/* Lime action buttons */
+button {
+  font-weight: 800 !important;
+}
+
+button:not(:disabled):hover {
+  border-color: var(--bhoomi-accent) !important;
+}
+
+/* Lime highlights and indicators */
+.badge,
+.status-indicator {
+  color: var(--bhoomi-primary) !important;
+}
+
+/* Farmer photograph */
+body::before {
+  background:
+    linear-gradient(
+      rgba(247, 248, 245, 0.12),
+      rgba(247, 248, 245, 0.12)
+    ),
+    url("/farmer-background.jpg") center center / cover no-repeat !important;
+}
+
+
+/* ===== CLEAR FARMER PHOTO + EXTRA BOLD TEXT ===== */
+
+/* Make background photograph sharp and clearly visible */
+body::before {
+  background:
+    linear-gradient(
+      rgba(247, 248, 245, 0.02),
+      rgba(247, 248, 245, 0.02)
+    ),
+    url("/farmer-background.jpg") center center / cover no-repeat !important;
+
+  filter: none !important;
+  opacity: 1 !important;
+}
+
+/* Remove excessive blur and white wash */
+.app-shell {
+  background: rgba(247, 248, 245, 0.16) !important;
+  backdrop-filter: none !important;
+}
+
+/* Extra bold main headings */
+h1 {
+  color: #171717 !important;
+  font-family: "Manrope", sans-serif !important;
+  font-size: clamp(42px, 5vw, 78px) !important;
+  font-weight: 900 !important;
+  letter-spacing: -2px !important;
+  line-height: 1.08 !important;
+  -webkit-text-stroke: 0.7px #171717;
+  text-shadow: 0 1px 2px rgba(255,255,255,0.35);
+}
+
+/* Stronger supporting text */
+p {
+  color: #171717 !important;
+  font-weight: 700 !important;
+  text-shadow: 0 1px 2px rgba(255,255,255,0.45);
+}
+
+/* Strong labels and navigation */
+label,
+strong,
+.topbar,
+button {
+  font-weight: 800 !important;
+}
+
+/* Keep dashboard cards readable */
+.panel,
+.visual-card {
+  background: rgba(255,255,255,0.94) !important;
+}
+
+
+/* ===== EXTRA THICK BLACK TEXT OUTLINES ===== */
+
+.hero h1,
+.hero h1 em,
+.section-heading h2,
+.panel-heading h3,
+.prediction-name,
+.brand,
+.brand-ai {
+  color: #171717 !important;
+  font-weight: 900 !important;
+  -webkit-text-stroke: 1.1px #171717 !important;
+  paint-order: stroke fill;
+}
+
+/* Make smaller text stronger too */
+.hero-copy > p,
+.panel-heading p,
+.section-kicker,
+.hero-points span,
+.secure-note {
+  color: #171717 !important;
+  font-weight: 800 !important;
+  -webkit-text-stroke: 0.25px #171717;
+}
+
+/* Strong, readable button labels */
+.analyze-button,
+.download-button {
+  font-weight: 900 !important;
+  -webkit-text-stroke: 0.3px currentColor;
+}
+
+
+/* ===== BHOOMI AI TYPOGRAPHY AND COLORS ===== */
+
+/* Main headings */
+h1, h2, h3,
+.hero h1,
+.section-heading h2,
+.panel-heading h3 {
+  color: #171717 !important;
+  font-weight: 900 !important;
+  -webkit-text-stroke: 0.3px #171717;
+}
+
+/* Smaller headings and labels */
+h4, h5,
+.section-kicker,
+.panel-heading p {
+  color: #47752f !important;
+  font-weight: 750 !important;
+}
+
+/* Regular content - bold, but lighter than headings */
+p, span, label, li,
+.hero-copy > p,
+.hero-points span,
+.secure-note {
+  color: #343A31;
+  font-weight: 600 !important;
+  -webkit-text-stroke: 0 !important;
+  text-shadow: none !important;
+}
+
+/* ===== CLEAN WHITE UPLOAD SECTION ===== */
+
+.dropzone {
+  background: #ffffff !important;
+  border: 2px dashed #b8bdb4 !important;
+  color: #171717 !important;
+}
+
+.dropzone * {
+  color: #343A31 !important;
+  text-shadow: none !important;
+  -webkit-text-stroke: 0 !important;
+}
+
+.dropzone svg {
+  color: #343A31 !important;
+  stroke: #343A31 !important;
+}
+
+/* Keep upload button clean */
+.dropzone button {
+  background: #171717 !important;
+  color: #ffffff !important;
+  border-color: #171717 !important;
+  font-weight: 700 !important;
+}
+
+
+/* Slightly reduce heading boldness */
+h1, h2, h3,
+.hero h1,
+.section-heading h2,
+.panel-heading h3 {
+  font-weight: 750 !important;
+  -webkit-text-stroke: 0.15px #171717 !important;
+}
+
+/* Keep subheadings moderately bold */
+h4, h5,
+.section-kicker,
+.panel-heading p {
+  font-weight: 650 !important;
+}
+
