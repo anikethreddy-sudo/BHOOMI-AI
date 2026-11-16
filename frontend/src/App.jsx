@@ -103,7 +103,7 @@ function App() {
     }
   }
 
-  function downloadReport() {
+  function downloadJsonReport() {
     if (!result) return;
     const report = {
       project: "BHOOMI AI",
@@ -120,6 +120,58 @@ function App() {
     link.download = "bhoomi-ai-report.json";
     link.click();
     URL.revokeObjectURL(url);
+  }
+
+  function downloadPdfReport() {
+    if (!result) return;
+    const reportWindow = window.open("", "_blank");
+    if (!reportWindow) {
+      setError("Allow pop-ups to create your PDF report.");
+      return;
+    }
+    const safe = (value) => String(value ?? "").replace(/[&<>"']/g, (char) => ({
+      "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"
+    }[char]));
+    const topPredictions = (result.top_k || []).slice(0, 3).map((item, index) => `
+      <tr><td>${index + 1}</td><td>${safe(formatClass(item.class_name))}</td>
+      <td>${(Number(item.probability) * 100).toFixed(1)}%</td></tr>
+    `).join("");
+    const generated = new Date().toLocaleString();
+    reportWindow.document.write(`
+      <!doctype html><html><head><meta charset="utf-8"><title>BHOOMI AI Analysis Report</title>
+      <style>
+        *{box-sizing:border-box}body{font-family:Arial,sans-serif;color:#252a22;margin:36px;line-height:1.5}
+        header{border-bottom:3px solid #a3d65c;padding-bottom:16px;margin-bottom:24px}
+        h1{margin:0;font-size:28px}header p,.muted{color:#687064;font-size:12px}
+        .result{background:#f3f7ee;border:1px solid #dce8cf;border-radius:10px;padding:18px;margin:18px 0}
+        .label{font-size:11px;letter-spacing:1px;color:#687064;font-weight:bold}
+        .prediction{font-size:23px;font-weight:bold;margin:6px 0}
+        .confidence{font-size:18px;font-weight:bold;color:#527d24}
+        table{width:100%;border-collapse:collapse;margin-top:10px}th,td{text-align:left;padding:10px;border-bottom:1px solid #e5e8e1}
+        th{background:#f5f6f2;font-size:12px}.images{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:14px}
+        .images figure{margin:0}.images img{width:100%;max-height:260px;object-fit:contain;border:1px solid #e1e5dc;border-radius:8px}
+        figcaption{font-size:12px;color:#687064;margin-top:5px}.note{margin-top:26px;padding-top:12px;border-top:1px solid #ddd;font-size:11px;color:#687064}
+        @media print{body{margin:18mm}.result{break-inside:avoid}.images{break-inside:avoid}}
+      </style></head><body>
+      <header><h1>BHOOMI AI</h1><p>Tomato Leaf Analysis · EfficientNet-B0 · Generated ${safe(generated)}</p></header>
+      <div class="result"><div class="label">MOST LIKELY CONDITION</div>
+      <div class="prediction">${safe(formatClass(prediction))}</div>
+      <div class="confidence">Model confidence: ${safe(confidence)}%</div>
+      <p class="muted">Uploaded file: ${safe(file?.name || "Not available")}</p></div>
+      <h2>Top predictions</h2><table><thead><tr><th>#</th><th>Predicted class</th><th>Probability</th></tr></thead>
+      <tbody>${topPredictions || "<tr><td colspan='3'>No additional predictions returned.</td></tr>"}</tbody></table>
+      <h2>Visual explanation</h2><div class="images">
+      ${preview ? `<figure><img src="${safe(preview)}"><figcaption>Original leaf image</figcaption></figure>` : ""}
+      ${heatmapUrl ? `<figure><img src="${safe(heatmapUrl)}"><figcaption>Grad-CAM heatmap</figcaption></figure>` : ""}
+      ${overlayUrl ? `<figure><img src="${safe(overlayUrl)}"><figcaption>Grad-CAM overlay</figcaption></figure>` : ""}
+      </div>
+      <p class="note">Educational prototype only. Model predictions are experimental and should not replace diagnosis or advice from an agricultural expert. Grad-CAM visualizations are explanatory aids, not proof of disease.</p>
+      </body></html>`);
+    reportWindow.document.close();
+    reportWindow.addEventListener("load", () => {
+      reportWindow.focus();
+      reportWindow.print();
+    });
   }
 
   const prediction = result?.prediction || result?.candidate_prediction;
@@ -327,7 +379,10 @@ function App() {
                   {result.requires_expert_review && (
                     <div className="review-warning"><AlertCircle size={16} /> Expert review recommended for this result.</div>
                   )}
-                  <button className="download-button" onClick={downloadReport}><Download size={16} /> Download analysis report</button>
+                  <div className="report-actions">
+                    <button className="download-button" onClick={downloadPdfReport}><Download size={16} /> Download PDF report</button>
+                    <button className="download-button" onClick={downloadJsonReport}><FileText size={16} /> Download JSON data</button>
+                  </div>
                 </div>
               </section>
 
